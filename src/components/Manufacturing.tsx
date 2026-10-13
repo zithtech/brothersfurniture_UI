@@ -68,13 +68,13 @@ export default function Manufacturing() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
-              <Link to="/contact" className="btn-solid gap-3 py-3 sm:py-3.5 px-5 sm:px-6 text-xs sm:text-[13px]">
+            <div className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-6">
+              <Link to="/contact" className="btn-solid gap-2.5 py-3 sm:py-3.5 px-5 sm:px-6 text-xs sm:text-[13px] w-full sm:w-auto text-center justify-center">
                 Explore Our Manufacturing
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <button className="flex items-center gap-3 text-xs sm:text-[13px] font-semibold transition hover:opacity-80">
-                <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-line bg-surface hover:bg-ink/5 transition">
+              <button className="flex items-center gap-2.5 text-xs sm:text-[13px] font-semibold transition hover:opacity-80 py-1">
+                <span className="flex h-8.5 w-8.5 sm:h-9.5 sm:w-9.5 items-center justify-center rounded-full border border-line bg-surface hover:bg-ink/5 transition">
                   <svg className="ml-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -115,18 +115,18 @@ export default function Manufacturing() {
 
               <div>
                 <img src={processImg} alt="Manufacturing Processes" className="w-full object-contain" />
-                <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mt-3">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-3 lg:gap-4 mt-3">
                   <div>
-                    <h5 className="text-xs sm:text-[13px] font-semibold text-center leading-tight">Precision Cutting</h5>
-                    <p className="text-[10px] sm:text-[11px] text-ink/60 text-center mt-0.5">Advanced CNC Machines</p>
+                    <h5 className="text-[11px] sm:text-[13px] font-semibold text-center leading-tight">Precision Cutting</h5>
+                    <p className="text-[9.5px] sm:text-[11px] text-ink/60 text-center mt-0.5 leading-snug">Advanced CNC</p>
                   </div>
                   <div>
-                    <h5 className="text-xs sm:text-[13px] font-semibold text-center leading-tight">Expert Finishing</h5>
-                    <p className="text-[10px] sm:text-[11px] text-ink/60 text-center mt-0.5">Smooth & Refined Surface</p>
+                    <h5 className="text-[11px] sm:text-[13px] font-semibold text-center leading-tight">Expert Finishing</h5>
+                    <p className="text-[9.5px] sm:text-[11px] text-ink/60 text-center mt-0.5 leading-snug">Smooth Surface</p>
                   </div>
                   <div>
-                    <h5 className="text-xs sm:text-[13px] font-semibold text-center leading-tight">Durable Coating</h5>
-                    <p className="text-[10px] sm:text-[11px] text-ink/60 text-center mt-0.5">Long-Lasting Finish</p>
+                    <h5 className="text-[11px] sm:text-[13px] font-semibold text-center leading-tight">Durable Coating</h5>
+                    <p className="text-[9.5px] sm:text-[11px] text-ink/60 text-center mt-0.5 leading-snug">Long-Lasting</p>
                   </div>
                 </div>
               </div>

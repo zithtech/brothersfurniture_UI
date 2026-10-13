@@ -33,7 +33,7 @@ export default function Contact() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 p-4 sm:p-6 lg:p-10 items-start">
           
           {/* LEFT COLUMN: Header, Direct Contact Info Cards, Map & Studio */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8">
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8">
             
             {/* 1. Hero Text */}
             <div className="pt-1">
@@ -159,8 +159,8 @@ export default function Contact() {
             
           </div>
 
-          {/* RIGHT COLUMN: Contact Form Card */}
-          <div className="lg:col-span-5 w-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.08)] border border-stone-200/80 flex flex-col gap-3 sm:gap-3.5">
+          {/* RIGHT COLUMN: Contact Form Card (Get in Touch - shown first on mobile & tab) */}
+          <div className="order-1 lg:order-2 lg:col-span-5 w-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.08)] border border-stone-200/80 flex flex-col gap-3 sm:gap-3.5">
             
             <div className="flex items-center gap-2 text-stone-500 mb-0.5">
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

@@ -10,11 +10,11 @@ export default function MegaMenu({ open, onNavigate }: { open: boolean; onNaviga
   return (
     <div
       id="shop-menu"
-      className={`absolute inset-x-0 top-[calc(100%+12px)] rounded-[2.25rem] border border-stone-200/90 bg-white/95 backdrop-blur-2xl shadow-[0_30px_70px_-15px_rgba(0,0,0,0.18)] transition-all duration-300 overflow-hidden ${
+      className={`absolute inset-x-0 top-full rounded-none border-b border-stone-200/90 bg-white/98 backdrop-blur-2xl shadow-[0_30px_70px_-15px_rgba(0,0,0,0.15)] transition-all duration-300 overflow-hidden ${
         open ? 'visible translate-y-0 opacity-100 pointer-events-auto' : 'invisible -translate-y-2 opacity-0 pointer-events-none'
       }`}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 p-8 lg:p-9">
+      <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 px-4 sm:px-6 lg:px-10 py-8 lg:py-9">
         <div className="col-span-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">Shop by category</p>
           <ul className="mt-5 grid grid-cols-2 gap-x-6">
