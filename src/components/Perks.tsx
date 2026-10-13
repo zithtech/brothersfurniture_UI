@@ -148,7 +148,7 @@ export default function Perks() {
                     {p.title}
                   </h3>
                 </div>
-                <p className="mt-0.5 text-[10.5px] sm:text-[11.5px] text-muted leading-tight truncate sm:whitespace-normal">
+                <p className="mt-0.5 text-[10.5px] sm:text-[11.5px] text-muted leading-snug">
                   {p.text}
                 </p>
               </div>

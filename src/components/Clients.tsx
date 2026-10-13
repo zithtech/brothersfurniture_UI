@@ -49,7 +49,7 @@ export default function Clients() {
             <span className="text-ink/40"> across industries.</span>
           </h2>
         </div>
-        <Link to="/clients" className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide">
+        <Link to="/clients" className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide self-start md:self-auto shrink-0 md:mr-12 lg:mr-0">
           <span className="border-b border-ink pb-0.5 transition group-hover:border-accent group-hover:text-accent">
             View all {clients.length} clients
           </span>

@@ -243,10 +243,10 @@ export default function Hero() {
 
               <div
                 key={index}
-                className="relative z-[2] grid min-h-[580px] sm:min-h-[620px] md:grid-cols-[5fr_6fr] lg:min-h-[680px]"
+                className="relative z-[2] grid min-h-[540px] sm:min-h-[580px] md:grid-cols-[5fr_6fr] lg:min-h-[660px]"
               >
                 {/* ─── Left Copy ─── */}
-                <div className="relative z-10 flex flex-col justify-center px-6 pb-8 pt-12 sm:px-10 md:px-8 md:py-16 lg:px-14 xl:pl-20">
+                <div className="relative z-10 flex flex-col justify-center px-5 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-12 md:px-7 md:py-12 lg:px-14 xl:pl-20">
                   {/* Premium badge */}
                   <div className="animate-rise flex items-center gap-2 text-amber-300/90">
                     <Diamond />
@@ -257,7 +257,7 @@ export default function Hero() {
                   </div>
 
                   {/* Category + Year label */}
-                  <div className="mt-4 sm:mt-5 animate-rise border-l-2 border-white/40 pl-3.5 sm:pl-4 text-xs sm:text-sm font-medium uppercase leading-snug tracking-wider text-white/80 [animation-delay:80ms]">
+                  <div className="mt-3.5 sm:mt-5 animate-rise border-l-2 border-white/40 pl-3 sm:pl-4 text-[11px] sm:text-xs md:text-sm font-medium uppercase leading-snug tracking-wider text-white/80 [animation-delay:80ms]">
                     {slide.label}
                     <br />
                     {slide.year} Collection
@@ -265,10 +265,10 @@ export default function Hero() {
 
                   {/* Title */}
                   <h1 
-                    className={`mt-6 sm:mt-8 animate-rise font-semibold text-white whitespace-pre-line [animation-delay:160ms] ${
+                    className={`mt-4 sm:mt-6 md:mt-7 animate-rise font-semibold text-white whitespace-pre-line [animation-delay:160ms] ${
                       slide.title.length > 20 
-                        ? 'text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.2] tracking-[0.06em] sm:tracking-[0.1em]' 
-                        : 'text-5xl sm:text-6xl md:text-7xl lg:text-[84px] xl:text-[96px] 2xl:text-[104px] leading-none tracking-[0.12em] sm:tracking-[0.18em]'
+                        ? 'text-2xl sm:text-3xl md:text-3xl lg:text-[42px] leading-[1.2] tracking-[0.05em] sm:tracking-[0.08em]' 
+                        : 'text-4xl sm:text-5xl md:text-5xl lg:text-[76px] xl:text-[92px] 2xl:text-[104px] leading-none tracking-[0.08em] sm:tracking-[0.12em] md:tracking-[0.14em]'
                     }`}
                   >
                     {slide.buttonLink ? (
@@ -281,21 +281,21 @@ export default function Hero() {
                   </h1>
 
                   {/* Subtitle */}
-                  <p className="mt-2 animate-rise text-sm sm:text-base font-light tracking-wide text-white/70 [animation-delay:200ms] lg:text-lg">
+                  <p className="mt-2 animate-rise text-xs sm:text-sm md:text-[15px] lg:text-lg font-light tracking-wide text-white/70 [animation-delay:200ms]">
                     {slide.subtitle}
                   </p>
 
                   {/* Description */}
-                  <p className="mt-3 sm:mt-4 max-w-sm sm:max-w-md animate-rise text-xs sm:text-[13px] leading-relaxed text-white/55 [animation-delay:240ms]">
+                  <p className="mt-2.5 sm:mt-3.5 max-w-sm sm:max-w-md animate-rise text-xs sm:text-[13px] leading-relaxed text-white/60 [animation-delay:240ms]">
                     {slide.description || product?.description}
                   </p>
 
                   {/* Feature pills */}
-                  <div className="mt-4 sm:mt-5 flex animate-rise flex-wrap gap-1.5 sm:gap-2 [animation-delay:280ms]">
+                  <div className="mt-3.5 sm:mt-4.5 flex animate-rise flex-wrap gap-1.5 sm:gap-2 [animation-delay:280ms]">
                     {slide.features?.map((feat) => (
                       <span
                         key={feat}
-                        className="rounded-full border border-white/20 bg-white/10 px-3 py-0.5 sm:px-3.5 sm:py-1 text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/80 backdrop-blur-sm"
+                        className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[9.5px] sm:text-[10.5px] font-medium uppercase tracking-wider text-white/80 backdrop-blur-sm"
                       >
                         {feat}
                       </span>
@@ -304,16 +304,16 @@ export default function Hero() {
 
                   {/* Price + Rating */}
                   {product && (
-                    <div className="mt-6 sm:mt-7 flex animate-rise items-end gap-5 sm:gap-6 [animation-delay:320ms]">
-                      <div>
-                        <span className="mr-2 text-[11px] sm:text-xs font-medium uppercase tracking-widest text-white/50">
+                    <div className="mt-5 sm:mt-6 flex animate-rise items-end gap-4 sm:gap-6 [animation-delay:320ms]">
+                      <div className="flex flex-wrap items-baseline gap-x-2">
+                        <span className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-white/50">
                           Starts from
                         </span>
-                        <span className="text-2xl sm:text-3xl font-semibold text-white">
+                        <span className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold text-white whitespace-nowrap">
                           {slide.startsFrom || '12,XXX rs'}
                         </span>
                       </div>
-                      <div className="mb-0.5 sm:mb-1 flex items-center gap-1">
+                      <div className="mb-0.5 flex items-center gap-1 shrink-0">
                         <Star />
                         <span className="text-xs sm:text-sm font-medium text-white/80">{product.rating}</span>
                       </div>
@@ -321,24 +321,24 @@ export default function Hero() {
                   )}
 
                   {/* CTA */}
-                  <div className="mt-6 sm:mt-8 flex animate-rise flex-wrap items-center gap-3.5 sm:gap-4 [animation-delay:360ms]">
+                  <div className="mt-5 sm:mt-7 flex animate-rise flex-wrap items-center gap-3 sm:gap-4 [animation-delay:360ms]">
                     <Link
                       to={slide.buttonLink || `/product/${product?.id}`}
-                      className="group relative inline-flex items-center justify-center overflow-hidden border-[1.5px] border-white px-7 sm:px-10 lg:px-12 py-3 sm:py-3.5 lg:py-4 text-[13px] sm:text-[14px] lg:text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white"
+                      className="group relative inline-flex items-center justify-center overflow-hidden border-[1.5px] border-white px-6 sm:px-8 md:px-7 lg:px-11 py-2.5 sm:py-3 lg:py-3.5 text-xs sm:text-[13px] lg:text-[14px] font-medium tracking-[0.08em] text-white transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white"
                     >
                       <span className="relative z-10">{slide.buttonText || 'Shop Now'}</span>
                     </Link>
                     {slide.buttonLink ? (
                       <Link
                         to={slide.buttonLink}
-                        className="text-xs sm:text-[13px] font-medium tracking-wide text-white/60 underline underline-offset-4 transition hover:text-white/90"
+                        className="text-xs sm:text-[13px] font-medium tracking-wide text-white/70 underline underline-offset-4 transition hover:text-white"
                       >
                         {slide.label ? `Explore ${slide.label} →` : 'Browse Catalogue →'}
                       </Link>
                     ) : product ? (
                       <Link
                         to={`/product/${product.id}`}
-                        className="text-xs sm:text-[13px] font-medium tracking-wide text-white/60 underline underline-offset-4 transition hover:text-white/90"
+                        className="text-xs sm:text-[13px] font-medium tracking-wide text-white/70 underline underline-offset-4 transition hover:text-white"
                       >
                         View Details →
                       </Link>
@@ -347,11 +347,11 @@ export default function Hero() {
 
                   {/* Material info */}
                   {product?.material && (
-                    <div className="mt-6 animate-rise [animation-delay:400ms] md:absolute md:bottom-8 lg:bottom-10 md:mt-0">
+                    <div className="mt-4 sm:mt-5 animate-rise [animation-delay:400ms]">
                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] text-white/40">
                         Material
                       </p>
-                      <p className="mt-0.5 text-[11px] sm:text-xs font-medium tracking-wide text-white/70">
+                      <p className="mt-0.5 text-[10.5px] sm:text-xs font-medium tracking-wide text-white/75">
                         {product.material}
                       </p>
                     </div>
@@ -359,14 +359,14 @@ export default function Hero() {
                 </div>
 
                 {/* ─── Right Visual ─── */}
-                <div className="relative flex min-h-[300px] sm:min-h-[360px] min-w-0 items-center justify-center pb-20 sm:pb-24 md:pb-0">
+                <div className="relative flex min-h-[260px] sm:min-h-[300px] md:min-h-0 min-w-0 items-center justify-center p-4 sm:p-6 md:p-6 lg:p-8 pb-16 sm:pb-20 md:pb-6">
                   {/* Square 3-image layout */}
                   <Link
                     to={slide.buttonLink || (product ? `/product/${product.id}` : '#')}
-                    className="relative aspect-square w-[85%] sm:w-[80%] max-w-[360px] sm:max-w-[440px] lg:max-w-[500px] animate-rise [animation-delay:150ms] group block cursor-pointer transition-transform duration-300 hover:scale-[1.01]"
+                    className="relative aspect-square w-[80%] sm:w-[75%] md:w-[85%] lg:w-[80%] max-w-[320px] sm:max-w-[400px] md:max-w-[380px] lg:max-w-[480px] animate-rise [animation-delay:150ms] group block cursor-pointer transition-transform duration-300 hover:scale-[1.01]"
                   >
                     {slide.images && slide.images.length >= 3 ? (
-                      <div className="grid absolute inset-0 grid-cols-2 gap-3 sm:gap-4">
+                      <div className="grid absolute inset-0 grid-cols-2 gap-2.5 sm:gap-3.5">
                         <div className="border border-white/30 relative h-full w-full overflow-hidden bg-white/5 p-1 shadow-2xl backdrop-blur-sm">
                           <img
                             src={slide.images[0]}
@@ -376,7 +376,7 @@ export default function Hero() {
                             className="absolute inset-1 h-[calc(100%-8px)] w-[calc(100%-8px)] object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>
-                        <div className="grid h-full w-full grid-rows-2 gap-3 sm:gap-4">
+                        <div className="grid h-full w-full grid-rows-2 gap-2.5 sm:gap-3.5">
                           <div className="border border-white/30 relative h-full w-full overflow-hidden bg-white/5 p-1 shadow-2xl backdrop-blur-sm">
                             <img
                               src={slide.images[1]}
@@ -410,11 +410,11 @@ export default function Hero() {
                   
                   {/* Floating dimensions badge */}
                   {product?.dimensions && (
-                    <div className="absolute bottom-16 right-4 sm:bottom-20 sm:right-6 md:-right-2 md:bottom-20 lg:-right-4 animate-rise rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 sm:px-4 sm:py-2 text-center shadow-xl backdrop-blur-md [animation-delay:400ms]">
-                      <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.12em] text-white/50">
+                    <div className="absolute bottom-16 right-4 sm:bottom-18 sm:right-6 md:bottom-4 md:right-4 lg:bottom-6 lg:right-6 animate-rise rounded-lg border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-3.5 md:py-2 text-center shadow-xl [animation-delay:400ms] pointer-events-none">
+                      <p className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.12em] text-white/50">
                         Dimensions
                       </p>
-                      <p className="mt-0.5 text-[11px] sm:text-xs font-medium text-white/80">{product.dimensions}</p>
+                      <p className="mt-0.5 text-[10.5px] sm:text-xs font-medium text-white/80 whitespace-nowrap">{product.dimensions}</p>
                     </div>
                   )}
                 </div>
@@ -425,14 +425,14 @@ export default function Hero() {
         </div>
 
         {/* Dynamic Dot Pagination (Auto-Swapping) */}
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 rounded-full bg-black/45 px-3 sm:px-3.5 py-1 sm:py-1.5 backdrop-blur-md border border-white/15 shadow-xl transition-all">
+        <div className="absolute bottom-3 sm:bottom-4 md:bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 rounded-full bg-black/50 px-3 sm:px-3.5 py-1 sm:py-1.5 backdrop-blur-md border border-white/15 shadow-xl transition-all">
           {slides.map((s, i) => {
             const diff = Math.abs(i - index)
             const dotSizeClass =
               diff === 0
-                ? 'h-4 w-4 sm:h-[18px] sm:w-[18px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.35)] ring-2 ring-white/50'
+                ? 'h-3.5 w-3.5 sm:h-4 sm:w-4 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.35)] ring-2 ring-white/50'
                 : diff === 1
-                ? 'h-2.5 w-2.5 sm:h-3 sm:w-3 bg-white/75 hover:bg-white'
+                ? 'h-2 w-2 sm:h-2.5 sm:w-2.5 bg-white/75 hover:bg-white'
                 : 'h-1.5 w-1.5 sm:h-2 sm:w-2 bg-white/45 hover:bg-white/80'
 
             return (
@@ -440,7 +440,7 @@ export default function Hero() {
                 key={s.title}
                 aria-label={`Go to slide ${i + 1}: ${s.title}`}
                 onClick={() => setIndex(i)}
-                className="group relative flex h-7 w-7 items-center justify-center transition-transform hover:scale-110 focus:outline-none"
+                className="group relative flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center transition-transform hover:scale-110 focus:outline-none"
               >
                 <span
                   className={`rounded-full transition-all duration-300 ease-out ${dotSizeClass}`}

@@ -76,16 +76,16 @@ export default function Navbar() {
 
   return (
     <header
-      className="sticky top-2.5 sm:top-4 z-50 mx-auto w-[calc(100%-1.25rem)] sm:w-[calc(100%-2.5rem)] max-w-7xl transition-all duration-300"
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-xl border-stone-200/90 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.08)]'
+          : 'bg-white/90 backdrop-blur-lg border-stone-200/60 shadow-xs'
+      }`}
       onKeyDown={(e) => e.key === 'Escape' && closeMega(0)}
     >
       <nav
         aria-label="Main Navigation"
-        className={`relative flex h-[62px] sm:h-[66px] items-center justify-between gap-3 sm:gap-6 px-3.5 sm:px-6 rounded-full border transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/90 backdrop-blur-xl border-stone-200/90 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)] ring-1 ring-black/[0.04]'
-            : 'bg-white/80 backdrop-blur-lg border-stone-200/60 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.06)]'
-        }`}
+        className="mx-auto flex h-[66px] sm:h-[72px] max-w-7xl items-center justify-between gap-3 sm:gap-6 px-4 sm:px-6 lg:px-10"
       >
         {/* Left: Brand Logo */}
         <div className="flex items-center shrink-0">
@@ -191,9 +191,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Floating Mobile Sheet Dropdown */}
+      {/* Mobile Sheet Dropdown */}
       {menuOpen && (
-        <div className="mt-2.5 max-h-[calc(100vh-6rem)] animate-fade-in overflow-y-auto rounded-[2rem] border border-stone-200/90 bg-white/95 backdrop-blur-2xl p-5 shadow-2xl lg:hidden">
+        <div className="absolute inset-x-0 top-full max-h-[calc(100vh-4.5rem)] animate-fade-in overflow-y-auto border-b border-stone-200/90 bg-white/98 backdrop-blur-2xl p-5 shadow-2xl lg:hidden">
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to} className="border-b border-stone-100 last:border-none">

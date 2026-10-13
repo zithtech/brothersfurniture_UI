@@ -102,9 +102,9 @@ export default function Testimonials() {
             </div>
 
             {/* Static height container so the section NEVER resizes or shifts when the message changes */}
-            <div className="mt-2 sm:mt-3 min-h-[140px] sm:min-h-[110px] md:min-h-[95px] flex items-center">
+            <div className="mt-2 sm:mt-3 min-h-[150px] sm:min-h-[120px] md:min-h-[95px] flex items-center">
               <blockquote key={index} className="animate-rise w-full">
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-[25px] font-light leading-[1.42] tracking-tight text-ink">
+                <p className="text-base sm:text-lg md:text-xl lg:text-[23px] font-light leading-[1.45] tracking-tight text-ink">
                   {t.quote}
                 </p>
               </blockquote>

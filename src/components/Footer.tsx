@@ -63,7 +63,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 border-t border-line px-3 sm:px-6 lg:px-10 py-5 sm:py-6 text-xs sm:text-sm text-muted sm:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 border-t border-line px-3 sm:px-6 lg:px-10 py-5 sm:py-6 pb-20 sm:pb-16 md:pb-6 text-xs sm:text-sm text-muted sm:flex-row">
         <span>© {YEAR} Brothers Furniture. All rights reserved.</span>
         <span>Inspiring better workspaces.</span>
       </div>

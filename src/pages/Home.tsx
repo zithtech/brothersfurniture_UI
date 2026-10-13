@@ -51,19 +51,19 @@ export default function Home() {
                 </span>
               </div>
               
-              <h2 className="mt-5 sm:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium leading-[1.08] tracking-tight">
+              <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-medium leading-[1.1] tracking-tight">
                 Your whole floor,<br />
                 <span className="text-white/40">planned for you.</span>
               </h2>
               
-              <p className="mt-4 sm:mt-5 max-w-sm sm:max-w-md text-xs sm:text-[14px] leading-relaxed text-white/60">
+              <p className="mt-3.5 sm:mt-5 max-w-sm sm:max-w-md text-xs sm:text-[14px] leading-relaxed text-white/60">
                 Send us your floor plan and headcount. Our designers return a furnished layout and a single quote — usually within 48 hours.
               </p>
               
-              <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-5">
+              <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-5">
                 <Link
                   to="/contact"
-                  className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-[13px] font-semibold text-ink transition-all hover:scale-105 hover:bg-accent hover:text-white"
+                  className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-[13px] font-semibold text-ink transition-all hover:scale-105 hover:bg-accent hover:text-white"
                 >
                   Request a layout
                 </Link>
@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative min-h-[340px] sm:min-h-[420px] md:min-h-[460px] lg:min-h-full p-2.5 sm:p-3 lg:p-4 flex flex-col justify-end">
+            <div className="relative min-h-[300px] sm:min-h-[380px] md:min-h-[440px] lg:min-h-full p-2.5 sm:p-3 lg:p-4 flex flex-col justify-end">
               <div className="absolute inset-2.5 sm:inset-3 lg:inset-4 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-white/10 bg-black/50">
                 {isVideoPlaying ? (
                   <div className="relative h-full w-full">
@@ -114,7 +114,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setIsVideoPlaying(false)}
-                      className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-black/75 px-3 sm:px-3.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-white backdrop-blur-md border border-white/20 transition hover:bg-black hover:scale-105 shadow-xl"
+                      className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-black/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-medium text-white backdrop-blur-md border border-white/20 transition hover:bg-black active:scale-95 shadow-xl"
                     >
                       <svg className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -138,7 +138,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setIsVideoPlaying(true)}
-                      className="group absolute top-4 right-4 sm:top-5 sm:right-5 z-10 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 sm:px-3.5 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-medium text-white/90 backdrop-blur-md border border-white/20 transition hover:bg-black/80 hover:text-white"
+                      className="group absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-10 inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-black/60 px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-medium text-white/90 backdrop-blur-md border border-white/20 transition hover:bg-black/80 hover:text-white"
                     >
                       <span className="flex h-3.5 w-3.5 sm:h-4 sm:w-4 items-center justify-center rounded-full bg-white/20 group-hover:bg-accent group-hover:text-white transition">
                         <svg className="h-2 w-2 sm:h-2.5 sm:w-2.5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -153,17 +153,17 @@ export default function Home() {
 
               {/* Custom Workspace Solutions tag - visible when video is not playing */}
               {!isVideoPlaying && (
-                <div className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 w-[94%] sm:w-auto sm:left-8 md:left-10 sm:translate-x-0 lg:left-12 flex items-center gap-2.5 sm:gap-4 rounded-[2rem] sm:rounded-[2.5rem] bg-[#f8f9fb] p-1.5 sm:p-2 pr-3.5 sm:pr-5 shadow-[0_20px_50px_rgb(0,0,0,0.3)] z-10 max-w-[420px] transition-all duration-300">
+                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 w-[92%] sm:w-auto sm:left-6 md:left-8 lg:left-10 sm:translate-x-0 flex items-center gap-2.5 sm:gap-4 rounded-[1.75rem] sm:rounded-[2.5rem] bg-[#f8f9fb] p-1.5 sm:p-2 pr-3 sm:pr-4 shadow-[0_20px_50px_rgb(0,0,0,0.3)] z-10 max-w-[420px] transition-all duration-300">
                   {/* Cube Icon */}
-                  <div className="flex h-10 w-10 sm:h-[52px] sm:w-[52px] shrink-0 items-center justify-center rounded-full bg-[#e5ebf0]">
-                    <svg className="h-5 w-5 sm:h-[22px] sm:w-[22px] text-[#141b29]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-[#e5ebf0]">
+                    <svg className="h-4.5 w-4.5 sm:h-5 sm:w-5 text-[#141b29]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                   </div>
                   {/* Text */}
-                  <div className="flex-1 min-w-0 py-0.5 sm:py-1">
-                    <p className="text-[12.5px] sm:text-[14.5px] font-bold text-[#141b29] leading-[1.2] truncate">Custom Workspace Solutions</p>
-                    <p className="text-[10.5px] sm:text-[12px] font-medium text-[#64748b] leading-[1.3] mt-0.5 sm:mt-1 truncate sm:whitespace-normal">
+                  <div className="flex-1 min-w-0 py-0.5">
+                    <p className="text-[12px] sm:text-[13.5px] font-bold text-[#141b29] leading-[1.2] truncate">Custom Workspace Solutions</p>
+                    <p className="text-[10px] sm:text-[11.5px] font-medium text-[#64748b] leading-[1.3] mt-0.5 truncate sm:whitespace-normal">
                       Designed for Comfort, Productivity & Style
                     </p>
                   </div>
@@ -171,10 +171,10 @@ export default function Home() {
                   <button
                     type="button"
                     onClick={() => setIsVideoPlaying(true)}
-                    className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-[#ebf0f5] transition hover:bg-[#e2e8f0]"
+                    className="flex h-8.5 w-8.5 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-[#ebf0f5] transition hover:bg-[#e2e8f0]"
                     title="Watch setup video"
                   >
-                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-[#141b29]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 text-[#141b29]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </button>

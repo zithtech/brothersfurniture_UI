@@ -324,18 +324,18 @@ export default function WholesaleRange() {
 
         {/* ── Key Metrics Strip (Floating Luxury Stats Card matching About page design) ── */}
         <div className="mt-8 sm:mt-10">
-          <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-6 lg:p-7 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)]">
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-slate-100">
+          <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-3.5 sm:p-5 lg:p-7 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)]">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-slate-100">
               {stats.map((s) => (
-                <div key={s.label} className="flex items-center gap-2.5 sm:gap-4 md:px-4 lg:px-7">
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-slate-50 border border-slate-100 text-slate-800 shadow-sm">
+                <div key={s.label} className="flex items-center gap-2.5 sm:gap-3.5 md:gap-4 p-1.5 sm:p-2 lg:px-6 xl:px-7">
+                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-full bg-slate-50 border border-slate-100 text-slate-800 shadow-sm">
                     {s.icon}
                   </div>
-                  <div className="min-w-0">
-                    <p className="text-xl sm:text-2xl lg:text-[28px] font-bold tracking-tight text-slate-700 leading-none truncate">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xl sm:text-2xl lg:text-[28px] font-bold tracking-tight text-slate-700 leading-none">
                       {s.value}
                     </p>
-                    <p className="mt-1 sm:mt-1.5 text-[10px] sm:text-xs lg:text-[13px] font-medium text-slate-500 sm:whitespace-nowrap truncate">
+                    <p className="mt-1 sm:mt-1.5 text-[10.5px] sm:text-xs lg:text-[13px] font-medium text-slate-500 leading-tight">
                       {s.label}
                     </p>
                   </div>
@@ -463,14 +463,14 @@ export default function WholesaleRange() {
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="mt-6 sm:mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 xl:gap-14 items-start"
+          className="mt-6 sm:mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 xl:gap-14 items-start"
         >
           
-          {/* Left Column: Refined Architectural Product Selector (6 in view + Scroll View) */}
-          <div className="relative flex flex-col h-[460px] sm:h-[500px] lg:h-[540px]">
+          {/* Left Column: Refined Architectural Product Selector */}
+          <div className="relative flex flex-col h-[440px] sm:h-[480px] lg:h-[540px]">
             <div
               ref={listContainerRef}
-              className="flex-1 min-h-0 space-y-2 sm:space-y-2.5 overflow-y-auto pr-1.5 sm:pr-3 py-1 overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-stone-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-stone-300 hover:[&::-webkit-scrollbar-thumb]:bg-stone-400 [&::-webkit-scrollbar-thumb]:rounded-full"
+              className="flex-1 min-h-0 space-y-2 sm:space-y-2.5 overflow-y-auto pr-1.5 sm:pr-2.5 py-1 overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-stone-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-stone-300 hover:[&::-webkit-scrollbar-thumb]:bg-stone-400 [&::-webkit-scrollbar-thumb]:rounded-full"
             >
               {filteredLines.map((l) => {
                 const fullIndex = lines.findIndex((x) => x.name === l.name)
@@ -492,7 +492,7 @@ export default function WholesaleRange() {
                     onClick={() => {
                       setActive(fullIndex)
                     }}
-                    className={`group relative flex cursor-pointer items-center justify-between rounded-xl sm:rounded-2xl p-3 sm:p-3.5 lg:p-4 transition-all duration-300 ${
+                    className={`group relative flex cursor-pointer items-center justify-between rounded-xl sm:rounded-2xl p-2.5 sm:p-3 lg:p-3.5 xl:p-4 transition-all duration-300 ${
                       isActive
                         ? 'bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] border border-stone-200/90 ring-1 ring-stone-900/5'
                         : 'bg-white/50 hover:bg-white border border-stone-200/50 hover:border-stone-200/80 hover:shadow-sm'
@@ -505,7 +505,7 @@ export default function WholesaleRange() {
                       }`}
                     />
 
-                    <div className="flex items-center gap-2.5 sm:gap-4 pl-1 sm:pl-1.5 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3.5 pl-1 min-w-0 flex-1">
                       <span
                         className={`font-mono text-[10px] sm:text-[11px] tabular-nums shrink-0 transition-colors duration-300 ${
                           isActive ? 'text-accent font-semibold' : 'text-stone-400 group-hover:text-stone-600'
@@ -515,7 +515,7 @@ export default function WholesaleRange() {
                       </span>
 
                       <div
-                        className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                        className={`flex h-7.5 w-7.5 sm:h-8.5 sm:w-8.5 lg:h-9 lg:w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
                           isActive
                             ? 'bg-ink text-white shadow-sm'
                             : 'bg-stone-100 text-stone-600 group-hover:bg-stone-200 group-hover:text-ink'
@@ -524,35 +524,35 @@ export default function WholesaleRange() {
                         <RangeIcon name={l.icon} className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                       </div>
 
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
                           <h3
-                            className={`text-xs sm:text-sm lg:text-base truncate tracking-tight transition-colors duration-300 ${
+                            className={`text-xs sm:text-[13px] lg:text-[15px] truncate tracking-tight transition-colors duration-300 ${
                               isActive ? 'font-semibold text-stone-900' : 'font-normal text-stone-700 group-hover:text-stone-900'
                             }`}
                           >
                             {l.name}
                           </h3>
                           {selectedCategory === 'All Collections' && (
-                            <span className="hidden sm:inline-block shrink-0 rounded-md bg-stone-100 px-1.5 py-0.5 text-[8.5px] font-medium tracking-wide text-stone-500 uppercase">
+                            <span className="hidden xl:inline-block shrink-0 rounded-md bg-stone-100 px-1.5 py-0.2 text-[8px] font-medium tracking-wide text-stone-500 uppercase">
                               {l.group}
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 truncate text-[10.5px] sm:text-xs text-stone-500 font-normal">
+                        <p className="mt-0.5 truncate text-[10px] sm:text-[11px] lg:text-xs text-stone-500 font-normal">
                           {l.tagline}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1.5 pl-2 shrink-0">
+                    <div className="flex items-center gap-1 pl-1.5 shrink-0">
                       <Link
                         to={l.to}
                         onClick={(e) => e.stopPropagation()}
-                        className={`inline-flex items-center gap-1 rounded-full px-2 sm:px-2.5 py-1 text-[10px] sm:text-[11px] font-medium transition-all duration-300 ${
+                        className={`inline-flex items-center gap-1 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[9.5px] sm:text-[10.5px] font-medium transition-all duration-300 ${
                           isActive
                             ? 'bg-stone-100 text-stone-900 hover:bg-ink hover:text-white'
-                            : 'opacity-90 sm:opacity-0 sm:-translate-x-1.5 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 bg-stone-50 text-stone-600 hover:bg-stone-100'
+                            : 'opacity-90 sm:opacity-0 sm:-translate-x-1 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 bg-stone-50 text-stone-600 hover:bg-stone-100'
                         }`}
                       >
                         <span className="hidden sm:inline">Explore</span>
@@ -578,159 +578,157 @@ export default function WholesaleRange() {
           </div>
 
           {/* Right Column: Sticky Visual Stage & Spec Showcase (Desktop & Tablet) */}
-          <div className="hidden md:block h-[500px] lg:h-[540px]">
-            <div className="sticky top-28 h-full">
-              <div className="h-full flex flex-col overflow-hidden rounded-3xl border border-stone-200/80 bg-white p-4 shadow-xl shadow-stone-900/5">
-                
-                {/* Visual Viewport Canvas */}
-                <div className="relative flex-1 min-h-[260px] overflow-hidden rounded-2xl bg-gradient-to-br from-stone-50 via-white to-stone-100 border border-stone-100 flex items-center justify-center p-6 sm:p-8">
-                  {/* Left Badges */}
-                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
-                    <span className="rounded-full bg-stone-950/85 backdrop-blur-md px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm">
-                      {pad(active + 1)} / {pad(lines.length)}
-                    </span>
-                    <span className="rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600 border border-stone-200/60 shadow-sm">
-                      {current.group}
-                    </span>
+          <div className="hidden md:flex flex-col min-h-[500px] lg:h-[540px]">
+            <div className="sticky top-24 sm:top-28 flex flex-col flex-1 overflow-hidden rounded-3xl border border-stone-200/80 bg-white p-3.5 sm:p-4 shadow-xl shadow-stone-900/5">
+              
+              {/* Visual Viewport Canvas */}
+              <div className="relative min-h-[220px] sm:min-h-[250px] lg:min-h-[270px] flex-1 overflow-hidden rounded-2xl bg-gradient-to-br from-stone-50 via-white to-stone-100 border border-stone-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+                {/* Left Badges */}
+                <div className="absolute left-3.5 top-3.5 z-10 flex items-center gap-1.5 sm:gap-2">
+                  <span className="rounded-full bg-stone-950/85 backdrop-blur-md px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-sm">
+                    {pad(active + 1)} / {pad(lines.length)}
+                  </span>
+                  <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-600 border border-stone-200/60 shadow-sm">
+                    {current.group}
+                  </span>
+                </div>
+
+                {/* Right Controls & Factory Direct */}
+                <div className="absolute right-3.5 top-3.5 z-10 flex items-center gap-1 sm:gap-1.5">
+                  <span className="hidden xl:inline-flex rounded-full bg-accent/10 border border-accent/20 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-accent backdrop-blur-md">
+                    Factory Direct
+                  </span>
+
+                  <div className="flex items-center gap-1">
+                    {/* Play/Pause Button */}
+                    <button
+                      type="button"
+                      onClick={() => setIsPlaying((p) => !p)}
+                      aria-label={isPlaying ? 'Pause auto-rotation' : 'Play auto-rotation'}
+                      title={isPlaying ? 'Pause auto-rotation' : 'Play auto-rotation'}
+                      className="flex h-6.5 w-6.5 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
+                    >
+                      {isPlaying && !isHovered ? (
+                        <svg className="h-2.5 w-2.5 sm:h-3 sm:w-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                      ) : (
+                        <svg className="h-2.5 w-2.5 sm:h-3 sm:w-3 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
+                    </button>
+
+                    {/* Prev Button */}
+                    <button
+                      type="button"
+                      onClick={handlePrev}
+                      aria-label="Previous line"
+                      title="Previous line"
+                      className="flex h-6.5 w-6.5 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
+                    >
+                      <ChevronLeft className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    </button>
+
+                    {/* Next Button */}
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      aria-label="Next line"
+                      title="Next line"
+                      className="flex h-6.5 w-6.5 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
+                    >
+                      <ChevronRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    </button>
                   </div>
+                </div>
 
-                  {/* Right Controls & Factory Direct */}
-                  <div className="absolute right-4 top-4 z-10 flex items-center gap-2">
-                    <span className="rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent backdrop-blur-md">
-                      Factory Direct
-                    </span>
+                {/* Preloaded crossfading photos */}
+                {lines.map((l, i) => (
+                  <img
+                    key={l.name}
+                    src={l.image}
+                    alt={i === active ? l.name : ''}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full transition-all duration-500 ease-out ${
+                      l.name === 'Storage Tables'
+                        ? 'object-cover p-3 rounded-2xl'
+                        : l.fit === 'contain'
+                        ? 'object-contain p-5 sm:p-7 mix-blend-multiply'
+                        : 'object-cover'
+                    } ${
+                      i === active
+                        ? 'scale-100 opacity-100'
+                        : 'scale-[1.03] opacity-0 pointer-events-none'
+                    }`}
+                  />
+                ))}
 
-                    <div className="flex items-center gap-1 pl-1">
-                      {/* Play/Pause Button */}
-                      <button
-                        type="button"
-                        onClick={() => setIsPlaying((p) => !p)}
-                        aria-label={isPlaying ? 'Pause auto-rotation' : 'Play auto-rotation'}
-                        title={isPlaying ? 'Pause auto-rotation' : 'Play auto-rotation'}
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
-                      >
-                        {isPlaying && !isHovered ? (
-                          <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                          </svg>
-                        ) : (
-                          <svg className="h-3 w-3 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        )}
-                      </button>
-
-                      {/* Prev Button */}
-                      <button
-                        type="button"
-                        onClick={handlePrev}
-                        aria-label="Previous line"
-                        title="Previous line"
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
-                      >
-                        <ChevronLeft className="h-3.5 w-3.5" />
-                      </button>
-
-                      {/* Next Button */}
-                      <button
-                        type="button"
-                        onClick={handleNext}
-                        aria-label="Next line"
-                        title="Next line"
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-stone-200/70 text-stone-700 shadow-sm hover:bg-stone-50 hover:text-ink active:scale-95 transition"
-                      >
-                        <ChevronRight className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Preloaded crossfading photos */}
-                  {lines.map((l, i) => (
-                    <img
-                      key={l.name}
-                      src={l.image}
-                      alt={i === active ? l.name : ''}
-                      loading="lazy"
-                      className={`absolute inset-0 h-full w-full transition-all duration-500 ease-out ${
-                        l.name === 'Storage Tables'
-                          ? 'object-cover p-3 rounded-2xl'
-                          : l.fit === 'contain'
-                          ? 'object-contain p-6 sm:p-8 mix-blend-multiply'
-                          : 'object-cover'
-                      } ${
-                        i === active
-                          ? 'scale-100 opacity-100'
-                          : 'scale-[1.03] opacity-0 pointer-events-none'
-                      }`}
+                {/* Stage Progress Bar */}
+                {isPlaying && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-stone-200/40 overflow-hidden z-10">
+                    <div
+                      key={`stage-bar-${active}-${isAutoPlaying}`}
+                      className="h-full bg-accent transition-all"
+                      style={{
+                        animation: isAutoPlaying ? `hero-progress ${AUTOPLAY_INTERVAL}ms linear` : 'none',
+                        width: isAutoPlaying ? undefined : (isHovered ? '100%' : '0%'),
+                      }}
                     />
-                  ))}
-
-                  {/* Stage Progress Bar */}
-                  {isPlaying && (
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-stone-200/40 overflow-hidden z-10">
-                      <div
-                        key={`stage-bar-${active}-${isAutoPlaying}`}
-                        className="h-full bg-accent transition-all"
-                        style={{
-                          animation: isAutoPlaying ? `hero-progress ${AUTOPLAY_INTERVAL}ms linear` : 'none',
-                          width: isAutoPlaying ? undefined : (isHovered ? '100%' : '0%'),
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-
-                {/* Spec Sheet & Metadata */}
-                <div className="mt-4 px-2 pb-1 shrink-0">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-accent flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                      {current.group}
-                    </span>
-                    <span className="text-xs text-stone-400 font-mono">
-                      Line #{pad(active + 1)}
-                    </span>
                   </div>
-
-                  <h3 key={current.name} className="mt-1 text-2xl font-semibold tracking-tight text-stone-900 animate-fade-in">
-                    {current.name}
-                  </h3>
-
-                  <p className="mt-1 text-xs sm:text-[13px] leading-relaxed text-stone-600 line-clamp-2">
-                    {current.tagline}
-                  </p>
-
-                  {/* Feature specs badges */}
-                  <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
-                    {current.features.map((feat) => (
-                      <span
-                        key={feat}
-                        className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[10.5px] font-medium text-stone-700 border border-stone-200/50"
-                      >
-                        {feat}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Direct Action Buttons */}
-                  <div className="mt-4 flex items-center gap-3 pt-3.5 border-t border-stone-100">
-                    <Link
-                      to={current.to}
-                      className="group flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-[13px] font-medium text-white transition-all duration-300 hover:bg-accent hover:shadow-md"
-                    >
-                      <span>Explore Collection</span>
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                    <Link
-                      to={`/contact?product=${encodeURIComponent(current.name)}`}
-                      className="inline-flex items-center justify-center rounded-xl border border-stone-300 px-4 py-2.5 text-[13px] font-medium text-stone-700 transition hover:border-ink hover:text-ink hover:bg-stone-50"
-                    >
-                      Request Quote
-                    </Link>
-                  </div>
-                </div>
-
+                )}
               </div>
+
+              {/* Spec Sheet & Metadata */}
+              <div className="mt-3 sm:mt-3.5 px-1 sm:px-2 pb-0.5 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.25em] text-accent flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    {current.group}
+                  </span>
+                  <span className="text-xs text-stone-400 font-mono">
+                    Line #{pad(active + 1)}
+                  </span>
+                </div>
+
+                <h3 key={current.name} className="mt-0.5 text-xl sm:text-2xl font-semibold tracking-tight text-stone-900 animate-fade-in">
+                  {current.name}
+                </h3>
+
+                <p className="mt-0.5 text-xs sm:text-[13px] leading-relaxed text-stone-600 line-clamp-2">
+                  {current.tagline}
+                </p>
+
+                {/* Feature specs badges */}
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {current.features.map((feat) => (
+                    <span
+                      key={feat}
+                      className="rounded-full bg-stone-100 px-2 sm:px-2.5 py-0.5 text-[9.5px] sm:text-[10px] font-medium text-stone-700 border border-stone-200/50"
+                    >
+                      {feat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Direct Action Buttons */}
+                <div className="mt-3.5 flex items-center gap-2.5 pt-3 border-t border-stone-100">
+                  <Link
+                    to={current.to}
+                    className="group flex-1 inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-ink px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-[13px] font-medium text-white transition-all duration-300 hover:bg-accent hover:shadow-md"
+                  >
+                    <span>Explore Collection</span>
+                    <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    to={`/contact?product=${encodeURIComponent(current.name)}`}
+                    className="inline-flex items-center justify-center rounded-xl border border-stone-300 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-[13px] font-medium text-stone-700 transition hover:border-ink hover:text-ink hover:bg-stone-50"
+                  >
+                    Request Quote
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
 
