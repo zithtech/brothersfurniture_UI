@@ -459,15 +459,15 @@ export default function WholesaleRange() {
           </div>
         </div>
 
-        {/* ── Main Interactive Showcase ── */}
+        {/* ── Main Interactive Showcase (Desktop & Tablet only, hidden on mobile) ── */}
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="mt-6 sm:mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 xl:gap-14 items-start"
+          className="mt-6 sm:mt-8 hidden md:grid md:grid-cols-2 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 xl:gap-14 items-start"
         >
           
-          {/* Left Column: Refined Architectural Product Selector */}
-          <div className="relative flex flex-col h-[440px] sm:h-[480px] lg:h-[540px]">
+          {/* Left Column: Refined Architectural Product Selector (Hidden on mobile) */}
+          <div className="hidden md:flex relative flex-col h-[440px] sm:h-[480px] lg:h-[540px]">
             <div
               ref={listContainerRef}
               className="flex-1 min-h-0 space-y-2 sm:space-y-2.5 overflow-y-auto pr-1.5 sm:pr-2.5 py-1 overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-stone-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-stone-300 hover:[&::-webkit-scrollbar-thumb]:bg-stone-400 [&::-webkit-scrollbar-thumb]:rounded-full"
