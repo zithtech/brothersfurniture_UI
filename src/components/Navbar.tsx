@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/cart'
 import { categories, countIn, products, formatPrice } from '../data/products'
-import { CartIcon, ChevronDown, CloseIcon, MenuIcon, SearchIcon } from './Icons'
+import { ArrowRight, CartIcon, ChevronDown, CloseIcon, MenuIcon, SearchIcon } from './Icons'
+import { company, whatsappLink } from '../data/company'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 
@@ -112,7 +113,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `relative inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-[12px] font-semibold tracking-wide transition-all duration-200 ${
                       isActive || megaOpen
-                        ? 'bg-stone-900 text-white shadow-xs'
+                        ? 'bg-stone-700 text-white shadow-xs'
                         : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/80'
                     }`
                   }
@@ -132,7 +133,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `relative inline-flex items-center rounded-full px-3.5 py-1.5 text-[12px] font-semibold tracking-wide transition-all duration-200 ${
                       isActive
-                        ? 'bg-stone-900 text-white shadow-xs'
+                        ? 'bg-stone-700 text-white shadow-xs'
                         : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/80'
                     }`
                   }
@@ -173,7 +174,7 @@ export default function Navbar() {
           {/* Quote Button (Desktop) */}
           <Link
             to="/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-stone-900 px-4 py-2 text-[12px] font-semibold text-white transition-all duration-200 hover:bg-accent hover:shadow-md ml-1"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-stone-700 px-4 py-2 text-[12px] font-semibold text-white transition-all duration-200 hover:bg-accent hover:shadow-md ml-1"
           >
             <span>Get Quote</span>
           </Link>
@@ -191,75 +192,107 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Sheet Dropdown */}
+      {/* Backdrop Dimmer for Clean Isolation */}
       {menuOpen && (
-        <div className="absolute inset-x-0 top-full max-h-[calc(100vh-4.5rem)] animate-fade-in overflow-y-auto border-b border-stone-200/90 bg-white/98 backdrop-blur-2xl p-5 shadow-2xl lg:hidden">
-          <ul className="flex flex-col gap-1">
+        <div
+          className="fixed inset-0 top-[66px] sm:top-[72px] z-40 bg-black/40 backdrop-blur-xs lg:hidden animate-fade-in"
+          onClick={closeMobile}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Sheet Dropdown (Compact Minimal Premium UI) */}
+      {menuOpen && (
+        <div className="absolute inset-x-0 top-full z-50 max-h-[calc(100vh-4.5rem)] animate-fade-in overflow-y-auto border-b border-stone-200/90 bg-white p-3.5 sm:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.18)] lg:hidden">
+          <ul className="flex flex-col gap-0.5">
             {links.map((l) => (
-              <li key={l.to} className="border-b border-stone-100 last:border-none">
+              <li key={l.to}>
                 {l.mega ? (
-                  <>
+                  <div>
                     <button
                       type="button"
                       onClick={() => setMobileShopOpen((o) => !o)}
                       aria-expanded={mobileShopOpen}
-                      className="flex w-full items-center justify-between py-3.5 text-base font-semibold text-stone-800"
+                      className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] transition-all ${
+                        mobileShopOpen
+                          ? 'bg-stone-50 text-stone-900 font-semibold'
+                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-medium'
+                      }`}
                     >
                       <span>{l.label}</span>
                       <ChevronDown
-                        className={`h-4 w-4 text-stone-400 transition-transform duration-300 ${
-                          mobileShopOpen ? 'rotate-180' : ''
+                        className={`h-4 w-4 text-stone-400 transition-transform duration-200 ${
+                          mobileShopOpen ? 'rotate-180 text-accent' : ''
                         }`}
                       />
                     </button>
+
                     <div
-                      className={`grid transition-[grid-template-rows] duration-300 ${
-                        mobileShopOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      className={`grid transition-[grid-template-rows] duration-200 ease-in-out ${
+                        mobileShopOpen ? 'grid-rows-[1fr] my-1' : 'grid-rows-[0fr]'
                       }`}
                     >
-                      <ul className="overflow-hidden">
-                        {[
-                          { label: 'All products', to: '/shop', count: '' },
-                          ...categories.map((c) => ({
-                            label: c,
-                            to: `/shop?category=${encodeURIComponent(c)}`,
-                            count: countIn(c).split(' ')[0],
-                          })),
-                        ].map((item) => (
-                          <li key={item.label}>
-                            <Link
-                              to={item.to}
-                              onClick={closeMobile}
-                              className="flex justify-between py-2 pl-3 text-sm font-medium text-stone-600 hover:text-accent"
-                            >
-                              <span>{item.label}</span>
-                              <span className="text-xs text-stone-400 font-mono">{item.count}</span>
-                            </Link>
-                          </li>
-                        ))}
-                        <li className="h-2" />
-                      </ul>
+                      <div className="overflow-hidden">
+                        <div className="rounded-xl bg-stone-50/90 border border-stone-100 p-2.5">
+                          <ul className="grid grid-cols-2 gap-1.5">
+                            {[
+                              { label: 'All Products', to: '/shop', count: '' },
+                              ...categories.map((c) => ({
+                                label: c,
+                                to: `/shop?category=${encodeURIComponent(c)}`,
+                                count: countIn(c).split(' ')[0],
+                              })),
+                            ].map((item) => (
+                              <li key={item.label}>
+                                <Link
+                                  to={item.to}
+                                  onClick={closeMobile}
+                                  className="group flex items-center justify-between rounded-lg bg-white p-2 border border-stone-200/50 shadow-xs hover:border-accent transition"
+                                >
+                                  <span className="text-[12px] font-medium text-stone-800 group-hover:text-accent transition truncate">
+                                    {item.label}
+                                  </span>
+                                  {item.count && (
+                                    <span className="text-[9.5px] font-mono text-stone-400 shrink-0 ml-1">
+                                      {item.count}
+                                    </span>
+                                  )}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Link
+                            to="/ergonomic-chairs"
+                            onClick={closeMobile}
+                            className="mt-2 flex items-center justify-between rounded-lg bg-[#eef7f5] px-2.5 py-1.5 text-[11.5px] font-semibold text-stone-900 border border-[#d2ece5] hover:bg-mint transition"
+                          >
+                            <span>Ergonomic Chairs range</span>
+                            <ArrowRight className="h-3 w-3 text-accent" />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <NavLink
                     to={l.to}
                     end={l.to === '/'}
                     onClick={closeMobile}
                     className={({ isActive }) =>
-                      `flex items-center gap-2.5 py-3.5 text-base font-semibold transition ${
-                        isActive ? 'text-accent' : 'text-stone-800 hover:text-stone-900'
+                      `flex items-center justify-between rounded-lg px-3 py-2.5 text-[14px] transition-all ${
+                        isActive
+                          ? 'bg-stone-700 text-white font-semibold shadow-xs'
+                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-medium'
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full bg-accent transition ${
-                            isActive ? 'opacity-100' : 'opacity-0'
-                          }`}
-                        />
                         <span>{l.label}</span>
+                        {isActive && (
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                        )}
                       </>
                     )}
                   </NavLink>
@@ -268,14 +301,41 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="mt-5 pt-3 border-t border-stone-100">
+          {/* Bottom Commercial Section (Compact) */}
+          <div className="mt-3 pt-3 border-t border-stone-100 flex flex-col gap-2">
             <Link
               to="/contact"
               onClick={closeMobile}
-              className="flex w-full items-center justify-center rounded-full bg-stone-900 py-3 text-xs font-semibold text-white transition hover:bg-accent shadow-sm"
+              className="group flex w-full items-center justify-between rounded-lg bg-stone-700 px-3.5 py-2.5 text-[11.5px] font-semibold uppercase tracking-wider text-white transition hover:bg-accent shadow-xs"
             >
-              Request a Commercial Quote
+              <span>Request Commercial Quote</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
+
+            {/* Quick Contact & WhatsApp Strip */}
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={`tel:${company.phones[0].tel}`}
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-stone-50 border border-stone-200/70 py-2 px-2.5 text-[11px] font-medium text-stone-700 hover:bg-stone-100 transition"
+              >
+                <svg className="h-3 w-3 text-stone-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                <span>Call Factory</span>
+              </a>
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-[#eef7f2] border border-[#cbe8d5] py-2 px-2.5 text-[11px] font-medium text-emerald-900 hover:bg-[#e2f2e8] transition"
+              >
+                <svg className="h-3 w-3 text-[#25d366]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
