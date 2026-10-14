@@ -20,37 +20,56 @@ export default function PageLoader({ onFinish }: PageLoaderProps) {
     setTimeout(() => {
       setIsMounted(false)
       onFinish?.()
-    }, 700)
+    }, 600)
   }
 
   useEffect(() => {
     // Lock scroll while loader is visible
     document.body.style.overflow = 'hidden'
 
-    // Try playing video immediately
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
+    const TOTAL_DURATION_MS = 3500
+    const startTime = performance.now()
+    let rafId: number
+
+    const step = (now: number) => {
+      const elapsed = now - startTime
+      const pct = Math.min((elapsed / TOTAL_DURATION_MS) * 100, 100)
+      setProgress(pct)
+
+      if (elapsed < TOTAL_DURATION_MS) {
+        rafId = requestAnimationFrame(step)
+      } else {
+        handleComplete()
+      }
+    }
+
+    rafId = requestAnimationFrame(step)
+
+    // Adjust video playback speed to finish in exactly 3.5s
+    const video = videoRef.current
+    if (video) {
+      const tunePlayback = () => {
+        if (video.duration && video.duration > 0) {
+          video.playbackRate = video.duration / 3.5
+        }
+      }
+
+      if (video.readyState >= 1) {
+        tunePlayback()
+      } else {
+        video.addEventListener('loadedmetadata', tunePlayback, { once: true })
+      }
+
+      video.play().catch(() => {
         // Fallback if autoplay is blocked
       })
     }
 
-    // Safety timeout in case video stalls or fails to trigger onEnded
-    const safetyTimer = setTimeout(() => {
-      handleComplete()
-    }, 5200)
-
     return () => {
       document.body.style.overflow = ''
-      clearTimeout(safetyTimer)
+      cancelAnimationFrame(rafId)
     }
   }, [])
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current && videoRef.current.duration) {
-      const p = (videoRef.current.currentTime / videoRef.current.duration) * 100
-      setProgress(Math.min(p, 99))
-    }
-  }
 
   if (!isMounted) return null
 
@@ -71,8 +90,6 @@ export default function PageLoader({ onFinish }: PageLoaderProps) {
             muted
             playsInline
             preload="auto"
-            onTimeUpdate={handleTimeUpdate}
-            onEnded={handleComplete}
             className="max-h-[300px] sm:max-h-[360px] md:max-h-[390px] w-auto aspect-[9/16] object-contain mix-blend-multiply select-none pointer-events-none"
           />
         </div>
