@@ -27,7 +27,7 @@ export default function PageLoader({ onFinish }: PageLoaderProps) {
     // Lock scroll while loader is visible
     document.body.style.overflow = 'hidden'
 
-    const TOTAL_DURATION_MS = 3500
+    const TOTAL_DURATION_MS = 3000
     const startTime = performance.now()
     let rafId: number
 
@@ -45,12 +45,12 @@ export default function PageLoader({ onFinish }: PageLoaderProps) {
 
     rafId = requestAnimationFrame(step)
 
-    // Adjust video playback speed to finish in exactly 3.5s
+    // Adjust video playback speed to finish in exactly 3s
     const video = videoRef.current
     if (video) {
       const tunePlayback = () => {
         if (video.duration && video.duration > 0) {
-          video.playbackRate = video.duration / 3.5
+          video.playbackRate = video.duration / 3.0
         }
       }
 
