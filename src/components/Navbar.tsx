@@ -2,18 +2,31 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/cart'
 import { categories, countIn, products, formatPrice } from '../data/products'
-import { ArrowRight, CartIcon, ChevronDown, CloseIcon, MenuIcon, SearchIcon } from './Icons'
+import {
+  ArrowRight,
+  BuildingIcon,
+  CartIcon,
+  ChairIcon,
+  ChevronDown,
+  CloseIcon,
+  HomeIcon,
+  MailIcon,
+  MenuIcon,
+  SearchIcon,
+  ShopBagIcon,
+  UsersIcon,
+} from './Icons'
 import { company, whatsappLink } from '../data/company'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/shop', label: 'Shop', mega: true },
-  { to: '/ergonomic-chairs', label: 'Chairs' },
-  { to: '/about', label: 'About' },
-  { to: '/clients', label: 'Clients' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/', label: 'Home', icon: HomeIcon },
+  { to: '/shop', label: 'Shop', mega: true, icon: ShopBagIcon },
+  { to: '/ergonomic-chairs', label: 'Chairs', icon: ChairIcon },
+  { to: '/about', label: 'About', icon: BuildingIcon },
+  { to: '/clients', label: 'Clients', icon: UsersIcon },
+  { to: '/contact', label: 'Contact', icon: MailIcon },
 ]
 
 const CLOSE_DELAY_MS = 120
@@ -213,15 +226,26 @@ export default function Navbar() {
                       type="button"
                       onClick={() => setMobileShopOpen((o) => !o)}
                       aria-expanded={mobileShopOpen}
-                      className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] transition-all ${
+                      className={`flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-[13.5px] transition-all ${
                         mobileShopOpen
-                          ? 'bg-stone-50 text-stone-900 font-semibold'
-                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-medium'
+                          ? 'bg-stone-100 text-stone-900 font-medium'
+                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-normal'
                       }`}
                     >
-                      <span>{l.label}</span>
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`flex h-6.5 w-6.5 items-center justify-center rounded-md transition-colors ${
+                            mobileShopOpen
+                              ? 'bg-white text-stone-900 shadow-2xs'
+                              : 'text-stone-400'
+                          }`}
+                        >
+                          <l.icon className="h-4 w-4" />
+                        </span>
+                        <span className="tracking-tight">{l.label}</span>
+                      </div>
                       <ChevronDown
-                        className={`h-4 w-4 text-stone-400 transition-transform duration-200 ${
+                        className={`h-3.5 w-3.5 text-stone-400 transition-transform duration-200 ${
                           mobileShopOpen ? 'rotate-180 text-accent' : ''
                         }`}
                       />
@@ -280,18 +304,29 @@ export default function Navbar() {
                     end={l.to === '/'}
                     onClick={closeMobile}
                     className={({ isActive }) =>
-                      `flex items-center justify-between rounded-lg px-3 py-2.5 text-[14px] transition-all ${
+                      `flex items-center justify-between rounded-lg px-2.5 py-2 text-[13.5px] transition-all ${
                         isActive
-                          ? 'bg-stone-700 text-white font-semibold shadow-xs'
-                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-medium'
+                          ? 'bg-stone-700 text-white font-medium shadow-xs'
+                          : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900 font-normal'
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
-                        <span>{l.label}</span>
+                        <div className="flex items-center gap-2.5">
+                          <span
+                            className={`flex h-6.5 w-6.5 items-center justify-center rounded-md transition-colors ${
+                              isActive
+                                ? 'bg-white/20 text-white'
+                                : 'text-stone-400'
+                            }`}
+                          >
+                            <l.icon className="h-4 w-4" />
+                          </span>
+                          <span className="tracking-tight">{l.label}</span>
+                        </div>
                         {isActive && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent mr-1" />
                         )}
                       </>
                     )}
